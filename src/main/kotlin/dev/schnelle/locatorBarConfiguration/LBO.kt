@@ -20,7 +20,7 @@ import org.bukkit.plugin.Plugin
 class LBO {
     companion object {
         const val INCOMPATIBILITY_MESSAGE =
-            "Locator Bar Configuration AND RedSyven's Locator Bar Options enabled. Neither will work properly."
+            "Locator Bar Configuration 和 RedSyven's Locator Bar Options 都已启用，两个插件都无法正常运行"
 
         private val lboKeyOff = NamespacedKey("lbo", "off")
         private val lboKeyNormalize = NamespacedKey("lbo", "normalize")
@@ -63,13 +63,13 @@ class LBO {
                     instance.baseValue != MAX_RANGE || !AttributeAdapter.isLocatorBarEnabled(player)
                 ) {
                     plugin.logger.fine(
-                        "Player ${player.name} has already customized their range with the plugin.",
+                        "玩家 ${player.name} 已经通过插件自定义了范围",
                     )
                     return
                 }
             }
 
-            plugin.logger.finer("Trying to migrate LBO to LBC for player ${player.name}")
+            plugin.logger.finer("尝试为玩家 ${player.name} 将 LBO 迁移到 LBC")
 
             var migratedData = false
             var disableBar = false
@@ -131,7 +131,7 @@ class LBO {
     ) : Listener {
         @EventHandler
         fun onJoin(event: PlayerJoinEvent) {
-            Scheduler(plugin).runAsyncTask("Error during LBO listener. Probably the migration.", 1) {
+            Scheduler(plugin).runAsyncTask("LBO 监听器出错。可能是迁移过程中出现的问题", 1) {
                 val player = event.player
                 if (isEnabled()) {
                     if (!player.isOp) {

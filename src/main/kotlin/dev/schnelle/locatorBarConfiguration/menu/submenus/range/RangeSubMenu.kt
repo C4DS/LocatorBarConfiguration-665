@@ -94,8 +94,8 @@ abstract class RangeSubMenu(
 
     override fun getNavigationButtonContent(): Component =
         Component
-            .text("$attributeName Range: ")
-            .append(Component.text("$currentRangeRep blocks").color(NamedTextColor.LIGHT_PURPLE))
+            .text("$attributeName 范围: ")
+            .append(Component.text("$currentRangeRep 个方块").color(NamedTextColor.LIGHT_PURPLE))
 
     override fun getNavigationTooltip(): String = getDescriptionText().first()
 

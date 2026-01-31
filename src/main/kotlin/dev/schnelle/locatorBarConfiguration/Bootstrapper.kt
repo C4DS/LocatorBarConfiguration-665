@@ -15,7 +15,7 @@ import java.net.URISyntaxException
 @Suppress("UnstableApiUsage", "Unused")
 class Bootstrapper : PluginBootstrap {
     override fun bootstrap(context: BootstrapContext) {
-        context.logger.debug("LocatorBarConfiguration bootstrap started.")
+        context.logger.debug("LocatorBarConfiguration 已启动")
 
         context.lifecycleManager.registerEventHandler(
             RegistryEvents.DIALOG.compose().newHandler { event ->

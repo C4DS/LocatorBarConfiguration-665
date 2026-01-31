@@ -19,19 +19,19 @@ import org.bukkit.entity.Player
 class ColorSubMenu(
     private val player: Player,
     parentMenu: AbstractMenu?,
-) : AbstractSubMenu(player, "Color", parentMenu) {
+) : AbstractSubMenu(player, "颜色", parentMenu) {
     private var currentColor: TextColor? = null
 
     private fun currentColorText(): Component {
-        val currentColorTranslated = currentColor?.let { getColorName(it) } ?: "Unknown/Not set"
+        val currentColorTranslated = currentColor?.let { getColorName(it) } ?: "未知/未设置"
         return Component
-            .text("Icon Color: ")
+            .text("图标颜色: ")
             .append(Component.text("⬤ $currentColorTranslated ⬤").color(currentColor))
     }
 
     override fun getNavigationButtonContent(): Component = currentColorText()
 
-    override fun getNavigationTooltip(): String = "Select which color your icon appears for other plays on their locator bars."
+    override fun getNavigationTooltip(): String = "选择您的图标在其他玩家的定位栏中显示的颜色"
 
     override fun beforeDialog() {
         currentColor = WaypointColor.getWaypointColor(player).getOrNull()
@@ -47,7 +47,7 @@ class ColorSubMenu(
             ActionButton.create(
                 getColorNameComponent(color).color(color.textColor),
                 Component
-                    .text("Set your color to ")
+                    .text("设置你的颜色为 ")
                     .append(getColorNameComponent(color).color(color.textColor)),
                 100,
                 DialogAction.staticAction(

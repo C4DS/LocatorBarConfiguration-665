@@ -1,7 +1,6 @@
 package dev.schnelle.locatorBarConfiguration.menu
 
 import dev.schnelle.locatorBarConfiguration.menu.submenus.AbstractMenu
-import dev.schnelle.locatorBarConfiguration.menu.submenus.implementations.InfoMenu
 import dev.schnelle.locatorBarConfiguration.menu.submenus.implementations.MainSubMenu
 import io.papermc.paper.registry.data.dialog.ActionButton
 import io.papermc.paper.registry.data.dialog.DialogBase
@@ -25,15 +24,15 @@ class MainMenu : AbstractMenu() {
         builder
             .base(
                 DialogBase
-                    .builder(Component.text("Locator Bar Configuration"))
+                    .builder(Component.text("定位栏配置"))
                     .pause(false)
                     .afterAction(DialogBase.DialogAfterAction.NONE)
                     .build(),
             ).type(
                 DialogType.multiAction(
-                    listOf(getSubMenuButton(), getInfoMenuButton()),
+                    listOf(getSubMenuButton()),
                     ActionButton.create(
-                        Component.text("Done"),
+                        Component.text("完成"),
                         null,
                         200,
                         DialogAction.customClick(
@@ -51,25 +50,19 @@ class MainMenu : AbstractMenu() {
 
     override fun beforeDialog() {}
 
-    override fun getTitle(): String = "Locator Bar Configuration"
+    override fun getTitle(): String = "定位栏配置"
 
     /**
      * Get button for navigating to MainSubMenu.
      */
     private fun getSubMenuButton(): ActionButton =
         getNavButton(
-            Component.text("Configuration"),
+            Component.text("配置"),
             Component.text(
-                "Configure how you can see others on the " +
-                    "Locator Bar and how others can see you.",
+                "配置您在定位栏上如何看到其他人，以及其他人如何看到您",
             ),
             ::MainSubMenu,
         )
-
-    /**
-     * Get button for navigating to InfoMenu.
-     */
-    private fun getInfoMenuButton(): ActionButton = getNavButton(Component.text("Info"), null, ::InfoMenu)
 
     private fun getNavButton(
         label: Component,
@@ -83,7 +76,7 @@ class MainMenu : AbstractMenu() {
             DialogAction.customClick(
                 { _, audience ->
                     if (audience !is Player) {
-                        audience.sendMessage(Component.text("Only players can trigger this."))
+                        audience.sendMessage(Component.text("只有玩家才能使用"))
                         return@customClick
                     }
 

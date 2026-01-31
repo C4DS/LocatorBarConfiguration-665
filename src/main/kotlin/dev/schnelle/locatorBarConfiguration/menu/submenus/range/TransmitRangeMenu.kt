@@ -14,11 +14,12 @@ class TransmitRangeMenu(
 ) : RangeSubMenu(player, parentMenu, Attribute.WAYPOINT_TRANSMIT_RANGE) {
     override fun getDescriptionText(): Array<String> =
         arrayOf(
-            "Select how far other people can see you on their locator bar.",
-            "Example: Set your transmit range to 1k and other people will see you on their locator bar if you're within 1000 blocks.",
+            "选择其他人可以在定位栏中看到您的范围",
+            "例如：将你的发射范围设置为 1k，如果你在 1000 个方块范围内，其他人就会在他们的定位栏上看到你",
         )
 
-    override fun getButtonToolTip(rangeRepresentation: String): String = "Other players can see you up to $rangeRepresentation blocks away."
+    override fun getButtonToolTip(rangeRepresentation: String): String =
+        "其他玩家最远可以在 $rangeRepresentation 个方块范围内看到你"
 
     override fun getRanges(): List<Double> = Config.getInstance().getTransmitRanges()
 

@@ -23,18 +23,17 @@ import org.bukkit.entity.Player
 class MainSubMenu(
     private val player: Player,
     parentMenu: AbstractMenu?,
-) : AbstractSubMenu(player, "Menu", parentMenu, 1) {
+) : AbstractSubMenu(player, "菜单", parentMenu, 1) {
     override fun getNavigationButtonContent(): Component = Component.text("Menu")
 
-    override fun getNavigationTooltip(): String = "Configure your locator bar."
+    override fun getNavigationTooltip(): String = "配置你的定位栏"
 
     override fun beforeDialog() {}
 
     override fun getBody(): List<DialogBody> =
         bodyFromString(
-            "The locator bar shows the position of other players.",
-            "You can configure the range at which other players can see you on" +
-                "their locator bar, as well as how far you can see other players on yours, using this menu.",
+            "定位栏显示其他玩家的位置",
+            "您可以使用此菜单配置其他玩家在其定位栏上看到您的范围，以及您在自己的定位栏上看到其他玩家的范围",
         )
 
     override fun getActionButtons(): List<ActionButton> =
@@ -56,16 +55,15 @@ class MainSubMenu(
 
         val enabledComponent =
             if (barEnabled) {
-                Component.text("Enabled").color(NamedTextColor.GREEN)
+                Component.text("已启用").color(NamedTextColor.GREEN)
             } else {
-                Component.text("Disabled").color(NamedTextColor.RED)
+                Component.text("已禁用").color(NamedTextColor.RED)
             }
 
         return ActionButton.create(
-            Component.text("Locator Bar: ").append(enabledComponent),
+            Component.text("定位栏: ").append(enabledComponent),
             Component.text(
-                "Disables the entire locator bar. If disabled, you do not show up on " +
-                    "other players' locator bars and you cannot see your own.",
+                "禁用定位栏。禁用后，您将不会显示在其他玩家的定位栏中，您也看不到自己的定位栏",
             ),
             200,
             DialogAction.customClick(

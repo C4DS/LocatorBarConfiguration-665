@@ -21,9 +21,9 @@ class LocatorBarConfiguration : JavaPlugin() {
         datapack = server.datapackManager.getPack(pluginMeta.name + "/provided")
         if (datapack != null) {
             if (datapack!!.isEnabled) {
-                logger.info("Locator Bar Configuration Datapack loaded successfully")
+                logger.info("Locator Bar Configuration 数据包加载成功")
             } else {
-                logger.warning("Locator Bar Configuration Datapack failed to load.")
+                logger.warning("Locator Bar Configuration 数据包无法加载")
             }
         }
     }
@@ -31,8 +31,7 @@ class LocatorBarConfiguration : JavaPlugin() {
     override fun onEnable() {
         if (!tryInitialize()) {
             logger.severe(
-                "Unsupported minecraft version found. Please ensure that the plugin is compatible with" +
-                    "the current minecraft version. LocatorBarConfiguration will not work properly.",
+                "检测到插件运行在不支持的服务端版本，LocatorBarConfiguration 无法正常运行",
             )
             disableDatapack()
             return
@@ -57,7 +56,7 @@ class LocatorBarConfiguration : JavaPlugin() {
                     Commands.literal("reload").executes {
                         Config.getInstance().reload()
                         it.source.sender.sendMessage(
-                            Component.text("Reloaded Locator Bar Configuration config").color(NamedTextColor.GOLD),
+                            Component.text("已重载 Locator Bar Configuration 配置").color(NamedTextColor.GOLD),
                         )
                         1
                     },

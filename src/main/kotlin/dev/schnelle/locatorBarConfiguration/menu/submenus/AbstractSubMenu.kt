@@ -108,7 +108,7 @@ abstract class AbstractSubMenu(
         val original = Component.text(getNavigationTooltip())
         return if (isLocked()) {
             Component
-                .text("LOCKED by Administrators")
+                .text("已被管理员锁定")
                 .color(NamedTextColor.DARK_RED)
                 .appendNewline()
                 .append(original.color(NamedTextColor.GRAY))

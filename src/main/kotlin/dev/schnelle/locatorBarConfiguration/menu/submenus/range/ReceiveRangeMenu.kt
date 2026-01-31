@@ -14,13 +14,12 @@ class ReceiveRangeMenu(
 ) : RangeSubMenu(player, parentMenu, Attribute.WAYPOINT_RECEIVE_RANGE) {
     override fun getDescriptionText(): Array<String> =
         arrayOf(
-            "Select how far you can see other people on your locator bar.",
-            "Example: Set your receive range to 1k to see players up to 1000 blocks away on your locator bar.",
-            "Your transmit range is also your receive range. If you set your receive range to 10k, but your transmit range to " +
-                "1k, you will only see players up to 1k blocks away on your locator bar.",
+            "选择您在定位栏中可以看到其他人的距离",
+            "例如：将接收范围设置为 1k，即可在定位栏上看到 1000 个方块范围内的玩家",
+            "你的发射范围同时也是接收范围。如果你将接收范围设置为 10k，而将发射范围设置为 1k，那么你的定位栏上将只能看到距离你 1k 方块以内的玩家",
         )
 
-    override fun getButtonToolTip(rangeRepresentation: String): String = "You can see other players up to $rangeRepresentation blocks away."
+    override fun getButtonToolTip(rangeRepresentation: String): String = "你最远可以看到 $rangeRepresentation 个方块的玩家"
 
     override fun getRanges(): List<Double> = Config.getInstance().getReceiveRanges()
 
