@@ -119,7 +119,7 @@ abstract class AbstractSubMenu(
 
     private fun getExitActionButton(): ActionButton =
         ActionButton.create(
-            Component.text("Done"),
+            Component.text("完成"),
             null,
             BACK_BUTTON_SIZE,
             DialogAction.staticAction(ClickEvent.callback { _ -> parentMenu?.showDialog(player) }),
